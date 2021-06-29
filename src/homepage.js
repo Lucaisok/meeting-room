@@ -1,9 +1,9 @@
-import './App.css';
+import "./App.css";
 
-export function Home () {
+export function Home() {
     return (
-        <div>
-            <h1>HomePage</h1>
+        <div className="homeContainer">
+            <h1 className="text">Home Page</h1>
         </div>
-    )
+    );
 }

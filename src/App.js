@@ -5,7 +5,7 @@ import { Cal } from "./calendar"
 
 function App() {
   return (
-    <div>
+    <div className="appContainer">
         <BrowserRouter>
             <Route exact path="/" component={Home}/>
             <Route path="/calendar" component={Cal} />
