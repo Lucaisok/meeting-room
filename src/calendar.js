@@ -17,8 +17,11 @@ const TouchCellWrapper = ({ children, value, onSelectSlot }) =>
 
 export function Cal() {
     const [modal, setModal] = useState(false);
+    const [otherModal, setOtherModal] = useState(false);
     const [titolo, setTitolo] = useState("");
     const [bucher, setBucher] = useState("");
+    const [oldTitle, setOldTitle] = useState();
+    const [oldBucher, setOldBucher] = useState();
     const [start, setStart] = useState();
     const [myEventsList, setMyEventsList] = useState([
         {
@@ -56,9 +59,13 @@ export function Cal() {
         };
 
         myEventsList.push(newEvent);
-        console.log("eventList: ", myEventsList);
         setModal(false);
-        // window.location.replace("/");
+    };
+
+    const selecter = (e) => {
+        setOldBucher(e.booker);
+        setOldTitle(e.title);
+        setOtherModal(true);
     };
 
     const closer = () => {
@@ -67,6 +74,10 @@ export function Cal() {
 
     const closeModal = () => {
         setModal(false);
+    };
+
+    const closeOtherModal = () => {
+        setOtherModal(false);
     };
 
     const onSelectSlot = ({ action, slots /*, ...props */ }) => {
@@ -115,6 +126,32 @@ export function Cal() {
                     </div>
                 </div>
             )}
+            {otherModal && (
+                <div
+                    className="modal"
+                    // style={{
+                    //     display: "flex",
+                    //     alignItems: "center",
+                    //     justifyContent: "center",
+                    // }}
+                >
+                    <p
+                        style={{
+                            textAlign: "right",
+                            marginRight: 20,
+                            fontSize: 20,
+                            transform: "rotate(45deg)",
+                            width: "fit-content",
+                            float: "right",
+                            cursor: "pointer",
+                        }}
+                        onClick={closeOtherModal}
+                    >
+                        +
+                    </p>
+                    <p className="testo">{`Raum 1 von ${oldBucher} zur ${oldTitle} gebucht`}</p>
+                </div>
+            )}
             <h1 style={{ textAlign: "center" }}>Raum 1 - Calendar</h1>
             <Calendar
                 components={{
@@ -129,10 +166,11 @@ export function Cal() {
                 events={myEventsList}
                 localizer={localizer}
                 events={myEventsList}
-                onSelectEvent={(event) =>
-                    alert(
-                        `${event.room} von ${event.booker} zur ${event.title} gebucht`
-                    )
+                onSelectEvent={(e) =>
+                    // alert(
+                    //     `${event.room} von ${event.booker} zur ${event.title} gebucht`
+                    // )
+                    selecter(e)
                 }
                 onSelectSlot={(slotInfo) => onSelectSlot(slotInfo)}
                 startAccessor="start"

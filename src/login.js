@@ -4,6 +4,7 @@ export function Login() {
     return (
         <div className="landingPage">
             <h1 className="raumName">Raum 1</h1>
+            <h2 className="freiOderBelegt">Frei</h2>
             <Link to={"/calendar"}>
                 <button>Buchen</button>
             </Link>
