@@ -158,6 +158,18 @@ html {
     position: absolute;
     bottom: 15px;
 }
+
+.logo {
+    width: 350px;
+    height: 100px;
+    position: absolute;
+    top: 1px;
+    left: 10px;
+    background-image: url("./sparda.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 /* 
 .rbc-btn-group > button:not(:first-child):not(:last-child) {
     display: none;
