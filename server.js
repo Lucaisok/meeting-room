@@ -53,14 +53,14 @@ app.use(express.json());
 
 app.use(compression());
 
-app.use(express.static(path.join(__dirname, "public"))); //then change "public" to "build"
+app.use(express.static(path.join(__dirname, "build"))); //then change "public" to "build"
 
 app.post("/register", (req, res) => {
     console.log("req.body: ", req.body);
 });
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html")); //then change "public" to "build"
+    res.sendFile(path.join(__dirname, "build", "index.html")); //then change "public" to "build"
 });
 
 app.listen(port, () => {
