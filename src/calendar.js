@@ -25,15 +25,23 @@ export function Cal() {
     const [start, setStart] = useState();
     const [myEventsList, setMyEventsList] = useState([
         {
-            start: "Thu Jul 01 2021 00:00:00 GMT+0200 (Central European Summer Time)",
-            end: "Thu Jul 01 2021 00:00:00 GMT+0200 (Central European Summer Time)",
+            start: moment(
+                "Thu Jul 01 2021 00:00:00 GMT+0200 (Central European Summer Time)"
+            ).toDate(),
+            end: moment(
+                "Thu Jul 01 2021 00:00:00 GMT+0200 (Central European Summer Time)"
+            ).toDate(),
             title: "Prototype Presentation",
             room: "zimmer 1",
             booker: "Stephan K.",
         },
         {
-            start: "Fri Jul 02 2021 00:00:00 GMT+0200 (Central European Summer Time)",
-            end: "Fri Jul 02 2021 00:00:00 GMT+0200 (Central European Summer Time)",
+            start: moment(
+                "Fri Jul 02 2021 00:00:00 GMT+0200 (Central European Summer Time)"
+            ).toDate(),
+            end: moment(
+                "Fri Jul 02 2021 00:00:00 GMT+0200 (Central European Summer Time)"
+            ).toDate(),
             title: "Meeting",
             room: "zimmer 1",
             booker: "Mona L.",
@@ -166,6 +174,7 @@ export function Cal() {
                 events={myEventsList}
                 localizer={localizer}
                 events={myEventsList}
+                views={["month", "week", "day", "agenda"]}
                 onSelectEvent={(e) =>
                     // alert(
                     //     `${event.room} von ${event.booker} zur ${event.title} gebucht`
